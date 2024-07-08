@@ -1,0 +1,110 @@
+[
+    {
+        "player": "Kevin",
+        "opponent": "David",
+        "game": "Kevin-David",
+        "TL": [26, 23],
+        "TR": [77, 23],
+        "BL": [26, 73],
+        "BR": [77, 73]
+    },
+    {
+        "player": "David",
+        "opponent": "Kevin",
+        "game": "David-Kevin",
+        "TL": [144, 21],
+        "TR": [190, 21],
+        "BL": [144, 74],
+        "BR": [190, 74]
+    },
+    {
+        "player": "Felix",
+        "opponent": "Sten",
+        "game": "Felix-Sten",
+        "TL": [27, 110],
+        "TR": [82, 110],
+        "BL": [27, 157],
+        "BR": [82, 157]
+    },
+    {
+        "player": "Sten",
+        "opponent": "Felix",
+        "game": "Sten-Felix",
+        "TL": [138, 106],
+        "TR": [189, 106],
+        "BL": [138, 157],
+        "BR": [189, 157]
+    },
+    {
+        "player": "Felix",
+        "opponent": "David",
+        "game": "Felix-David",
+        "TL": [251, 23],
+        "TR": [303, 23],
+        "BL": [251, 73],
+        "BR": [303, 73]
+    },
+    {
+        "player": "David",
+        "opponent":"Felix",
+        "game": "David-Felix",
+        "TL": [367, 21],
+        "TR": [412, 21],
+        "BL": [367, 74],
+        "BR": [412, 74]
+    },
+    {
+        "player": "Kevin",
+        "opponent": "Sten",
+        "game": "Kevin-Sten",
+        "TL": [250, 106],
+        "TR": [301, 106],
+        "BL": [250, 153],
+        "BR": [301, 153]
+    },
+    {
+        "player": "Sten",
+        "opponent": "Kevin",
+        "game": "Sten-Kevin",
+        "TL": [364, 106],
+        "TR": [415, 106],
+        "BL": [364, 155],
+        "BR": [415, 155]
+    },
+    {
+        "player": "Felix",
+        "opponent": "Kevin",
+        "game": "Felix-Kevin",
+        "TL": [27, 210],
+        "TR": [82, 210],
+        "BL": [27, 257],
+        "BR": [82, 257]
+    },
+    {
+        "player": "Kevin",
+        "opponent": "Felix",
+        "game": "Kevin-Felix",
+        "TL": [139, 210],
+        "TR": [190, 210],
+        "BL": [139, 257],
+        "BR": [190, 257]
+    },
+    {
+        "player": "David",
+        "opponent": "Sten",
+        "game": "David-Sten",
+        "TL": [32, 292],
+        "TR": [77, 292],
+        "BL": [32, 345],
+        "BR": [77, 345]
+    },
+    {
+        "player": "Sten",
+        "opponent": "David",
+        "game": "Sten-David",
+        "TL": [138, 294],
+        "TR": [189, 294],
+        "BL": [138, 344],
+        "BR": [189, 344]
+    }
+]
