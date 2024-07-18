@@ -15,6 +15,11 @@ IMAGE_PATH = 'img'
 REGION_PATH = 'points.json'
 VERBOSE = True
 
+# images get rescaled to this size
+# before we crop out the regions from REGION_PATH
+RESIZE_WIDTH = 440
+RESIZE_HEIGHT = 370
+
 
 def get_image_paths(path=IMAGE_PATH):
     """
@@ -50,8 +55,18 @@ def get_image_results(image_path, regions_dict):
 
         # get the image region
         image = cv2.imread(image_path)
+
+        # resize to the resize width and height
+        image = cv2.resize(image, (RESIZE_WIDTH, RESIZE_HEIGHT))
+
+        # convert to RGB
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+
+        # convert to PIL image
         image = Image.fromarray(image)
+
+        # crop the image
+        # here we crop out the region defined in the json file
         image = image.crop((TL[0], TL[1], BR[0], BR[1]))
 
         # convert the image to a numpy array
@@ -114,7 +129,8 @@ if __name__ == '__main__':
 
     full_results, full_regions = get_full_results()
 
-    missing_scores_counter = 0
+    # we save information about missing games
+    missing_scores_info = []
 
     with open('results.csv', 'w', newline='') as f:
         writer = csv.writer(f)
@@ -131,14 +147,31 @@ if __name__ == '__main__':
                 winner_name = player if winner == 1 else opponent
                 loser_name = player if winner == 0 else opponent
 
+                if winner == 0.5:
+
+                    score_info = {
+                        'round': int(round_number),
+                        'player': player,
+                        'opponent': opponent,
+                        'game': game,
+                        'winner': winner,
+                        'winner_name': winner_name,
+                        'loser_name': loser_name
+                    }
+
+                    # append the missing score to the list
+                    missing_scores_info.append(score_info)
+
+                    # we dont save missing scores
+                    # but we inform the user
+                    continue
+
                 writer.writerow([round_number, player, opponent, game, winner, winner_name, loser_name])
-
-                if winner == '0.5':
-                    missing_scores_counter += 1
-
     
-        
     print(f'Saved {len(full_results)} rounds to results.csv')
 
-    if missing_scores_counter > 0:
-        print(f'{missing_scores_counter} scores missing!')
+    if len(missing_scores_info) > 0:
+        print(f'\n{len(missing_scores_info)} game{'s are' if len(missing_scores_info) > 1 else ' is'} missing')
+
+        for missing_score in missing_scores_info:
+            print(f'Round {missing_score["round"]}: {missing_score["game"]} ({missing_score["round"]}.png)')
